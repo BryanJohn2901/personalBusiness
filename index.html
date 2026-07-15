@@ -1067,15 +1067,15 @@
                         <div class="ticket-progress-top">
                             <span class="ticket-progress-label">
                                 <i class="fas fa-ticket" aria-hidden="true"></i>
-                                Restam <span id="ticket-remaining-label">—</span> das vagas
+                                <span id="ticket-remaining-label">—</span> das vagas preenchidas
                             </span>
                             <span class="ticket-progress-pct" id="ticket-remaining-pct">—%</span>
                         </div>
-                        <div class="ticket-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Vagas restantes do Lote 1" id="ticket-bar">
+                        <div class="ticket-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Vagas preenchidas do Lote 1" id="ticket-bar">
                             <div class="ticket-bar-fill" id="ticket-bar-fill"></div>
                         </div>
                         <p class="ticket-progress-meta">
-                            <span id="ticket-remaining-count">—</span> de <span id="ticket-total-count">—</span> tickets disponíveis no Lote 1
+                            <span id="ticket-remaining-count">—</span> de <span id="ticket-total-count">—</span> vagas já preenchidas no Lote 1
                         </p>
                     </div>
 
@@ -1289,12 +1289,12 @@
             redirect: '',
             tickets: {
                 total: 100,
-                remainingPct: 75
+                filledPct: 75
             }
         };
 
-        function getRemainingTicketPct() {
-            return CONFIG.tickets.remainingPct;
+        function getFilledTicketPct() {
+            return CONFIG.tickets.filledPct;
         }
 
         function updateTicketProgress() {
@@ -1306,16 +1306,16 @@
             const totalCountEl = document.getElementById('ticket-total-count');
             if (!pctEl || !fillEl) return;
 
-            const remainingPct = getRemainingTicketPct();
+            const filledPct = getFilledTicketPct();
             const total = CONFIG.tickets.total;
-            const remainingCount = Math.max(1, Math.round((remainingPct / 100) * total));
+            const filledCount = Math.max(1, Math.round((filledPct / 100) * total));
 
-            pctEl.textContent = remainingPct + '%';
-            if (labelEl) labelEl.textContent = remainingPct + '%';
-            remainingCountEl.textContent = remainingCount;
+            pctEl.textContent = filledPct + '%';
+            if (labelEl) labelEl.textContent = filledPct + '%';
+            remainingCountEl.textContent = filledCount;
             totalCountEl.textContent = total;
-            fillEl.style.width = remainingPct + '%';
-            barEl.setAttribute('aria-valuenow', String(remainingPct));
+            fillEl.style.width = filledPct + '%';
+            barEl.setAttribute('aria-valuenow', String(filledPct));
         }
 
         updateTicketProgress();
