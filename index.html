@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Business Day | Henrique Batista</title>
+    <meta name="description" content="Uma imersão online e ao vivo, de um dia, com Henrique Batista, pra você sair da lógica de hora-aula e construir um negócio de personal trainer com faturamento previsível.">
+    <meta name="theme-color" content="#0A0F1E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#0A0F1E',
+                            surface: '#0F1526',
+                            card: '#12182A',
+                            darkgray: '#080C16',
+                            primary: '#DC853D',
+                            primaryHover: '#C97432',
+                            accent: '#E89A55',
+                            success: '#4ADE80',
+                            textPrimary: '#FFFFFF',
+                            textSecondary: '#94A3B8',
+                            gray: {
+                                300: '#CBD5E1',
+                                500: '#64748B',
+                                600: '#475569'
+                            }
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        shimmer: 'shimmer 1.5s infinite',
+                        pulse: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        float: 'float 7s ease-in-out infinite',
+                        'glow-pulse': 'glowPulse 3.2s ease-in-out infinite',
+                        'blob-drift': 'blobDrift 14s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(340%)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        glowPulse: {
+                            '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+                            '50%': { opacity: '0.9', transform: 'scale(1.06)' }
+                        },
+                        blobDrift: {
+                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                            '50%': { transform: 'translate(30px, -20px) scale(1.12)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --section-y: 5rem;
+            --section-y-lg: 7rem;
+            --container: 72rem;
+            --container-md: 48rem;
+            --gap-grid: 1.5rem;
+            --gap-split: 3rem;
+            --radius: 1.25rem;
+            --text-body: 0.9375rem;
+            --text-body-lg: 1.0625rem;
+        }
+
+        html { scrollbar-width: thin; scrollbar-color: #DC853D #0A0F1E; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0A0F1E; }
+        ::-webkit-scrollbar-thumb {
+            background: #DC853D;
+            border-radius: 9999px;
+        }
+
+        /* —— Layout system —— */
+        .page-container {
+            width: 100%;
+            max-width: var(--container);
+            margin-inline: auto;
+            padding-inline: var(--space-6);
+        }
+        .page-container--narrow {
+            max-width: var(--container-md);
+        }
+        .section {
+            position: relative;
+            padding-block: var(--section-y);
+        }
+        @media (min-width: 768px) {
+            .section { padding-block: var(--section-y-lg); }
+        }
+        .section-head {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: var(--space-5);
+            margin-bottom: var(--space-12);
+        }
+        .section-head--left {
+            align-items: flex-start;
+            text-align: left;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 2.5vw + 1rem, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            color: #fff;
+            max-width: 36rem;
+        }
+        .section-title--wide { max-width: 40rem; }
+        .stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        .stack--tight { gap: var(--space-4); }
+        .stack--loose { gap: var(--space-8); }
+        .grid-features {
+            display: grid;
+            gap: var(--gap-grid);
+        }
+        @media (min-width: 768px) {
+            .grid-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        .grid-steps {
+            display: grid;
+            gap: var(--gap-grid);
+        }
+        @media (min-width: 768px) {
+            .grid-steps {
+                grid-template-columns: 1fr auto 1fr auto 1fr;
+                gap: var(--space-4);
+                align-items: stretch;
+            }
+        }
+        .grid-split {
+            display: grid;
+            gap: var(--gap-split);
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .grid-split { grid-template-columns: 1.6fr 1fr; gap: var(--space-16); }
+            .grid-split--equal { grid-template-columns: 1fr 1fr; }
+        }
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #fff;
+            margin-bottom: var(--space-3);
+        }
+        .card-body {
+            font-size: var(--text-body);
+            line-height: 1.65;
+            color: #94A3B8;
+        }
+        .body-copy {
+            font-size: var(--text-body-lg);
+            line-height: 1.65;
+            color: #94A3B8;
+        }
+        .list-creds {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+        .list-creds li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            font-size: var(--text-body);
+            line-height: 1.55;
+            color: #94A3B8;
+        }
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-4) var(--space-8);
+            font-size: 0.875rem;
+            color: #94A3B8;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.9rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(220, 133, 61, 0.55);
+            color: #DC853D;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: rgba(220, 133, 61, 0.08);
+            animation: badgeGlow 3.5s ease-in-out infinite;
+        }
+
+        .ambient-blob {
+            position: absolute;
+            border-radius: 9999px;
+            pointer-events: none;
+            filter: blur(120px);
+            animation: blobDrift 14s ease-in-out infinite;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-color: #0A0F1E;
+            background-image:
+                radial-gradient(ellipse 70% 55% at 20% 35%, rgba(220, 133, 61, 0.12), transparent 60%),
+                radial-gradient(ellipse 55% 45% at 80% 20%, rgba(59, 100, 180, 0.1), transparent 55%),
+                url('img/hero-pattern.svg');
+            background-size: auto, auto, 110px 110px;
+            background-repeat: no-repeat, no-repeat, repeat;
+            background-position: center, center, 0 0;
+            opacity: 0.9;
+            mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+        }
+        .hero-pattern::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, rgba(10, 15, 30, 0.55) 0%, rgba(10, 15, 30, 0.15) 45%, rgba(10, 15, 30, 0.5) 100%);
+        }
+
+        .photo-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: #0a0f1e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            aspect-ratio: 4 / 5;
+            width: 100%;
+            max-height: 560px;
+            animation: floatSoft 7s ease-in-out infinite;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .photo-frame:hover {
+            border-color: rgba(220, 133, 61, 0.35);
+            box-shadow: 0 0 50px rgba(220, 133, 61, 0.12);
+        }
+        .photo-frame:hover img {
+            transform: scale(1.04);
+        }
+        .photo-frame::before,
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            width: 180px;
+            height: 180px;
+            border-radius: 9999px;
+            pointer-events: none;
+            filter: blur(40px);
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+        .photo-frame::before {
+            top: -40px;
+            left: -30px;
+            background: rgba(220, 133, 61, 0.22);
+        }
+        .photo-frame::after {
+            bottom: -50px;
+            right: -30px;
+            background: rgba(220, 133, 61, 0.28);
+            animation-delay: 1.5s;
+        }
+        .photo-frame-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(10,15,30,0.05) 0%, rgba(10,15,30,0.15) 55%, rgba(10,15,30,0.45) 100%);
+        }
+
+        .btn-cta {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #DC853D;
+            color: #0A0F1E;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            min-height: 3.25rem;
+            padding: 1rem 1.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 0 28px rgba(220, 133, 61, 0.45);
+            transition: all 0.3s ease;
+            border: 0;
+            cursor: pointer;
+            animation: ctaPulse 2.8s ease-in-out infinite;
+        }
+        .btn-cta--block {
+            width: 100%;
+            max-width: 20rem;
+        }
+        .btn-cta::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+            transform: translateX(-120%);
+            animation: shimmerSweep 3.2s ease-in-out infinite;
+        }
+        .btn-cta:hover {
+            background: #E89A55;
+            box-shadow: 0 0 48px rgba(220, 133, 61, 0.75);
+            transform: translateY(-3px) scale(1.02);
+            animation: none;
+        }
+        .btn-cta:hover::after {
+            animation-duration: 1.2s;
+        }
+
+        .feature-card {
+            background: rgba(18, 24, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: var(--space-8);
+            transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+            height: 100%;
+        }
+        .feature-card:hover {
+            border-color: rgba(220, 133, 61, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 24px rgba(220, 133, 61, 0.08);
+        }
+
+        .icon-chip {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.75rem;
+            background: rgba(220, 133, 61, 0.1);
+            border: 1px solid rgba(220, 133, 61, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC853D;
+            font-size: 1rem;
+            margin-bottom: var(--space-5);
+            box-shadow: 0 0 16px rgba(220, 133, 61, 0.12);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+        }
+        .feature-card:hover .icon-chip {
+            transform: scale(1.08);
+            background: rgba(220, 133, 61, 0.16);
+            box-shadow: 0 0 22px rgba(220, 133, 61, 0.28);
+        }
+        .icon-chip--sm {
+            width: 2.25rem;
+            height: 2.25rem;
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+        .step-head {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-5);
+        }
+        .step-head .icon-chip {
+            margin-bottom: 0;
+        }
+        .step-head .step-num {
+            margin-bottom: 0;
+        }
+        .trust-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .trust-item i {
+            color: #DC853D;
+            font-size: 0.85rem;
+        }
+        .list-creds li i {
+            color: #DC853D;
+            width: 1.1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .hero-line {
+            width: 3rem;
+            height: 2px;
+            background: #DC853D;
+            transform-origin: left;
+            animation: lineGrow 1.2s ease-out 0.4s both;
+            box-shadow: 0 0 12px rgba(220, 133, 61, 0.6);
+        }
+
+        .pricing-card {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: var(--space-10) var(--space-6) !important;
+        }
+        @media (min-width: 768px) {
+            .pricing-card {
+                padding: var(--space-12) var(--space-12) !important;
+            }
+        }
+        .pricing-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-5);
+        }
+        .pricing-stack .price-pop {
+            margin: var(--space-2) 0;
+            font-size: clamp(2.75rem, 4vw + 1rem, 3.75rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .cta-final {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-6);
+            text-align: center;
+        }
+        .footer-bar {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-block: var(--space-10);
+        }
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        @media (min-width: 768px) {
+            .footer-inner {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        .faq-btn:focus-visible,
+        .btn-cta:focus-visible,
+        .btn-submit:focus-visible {
+            outline: 2px solid #DC853D;
+            outline-offset: 3px;
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(220,133,61,0.35), transparent 40%, transparent 60%, rgba(220,133,61,0.2));
+            opacity: 0.5;
+            pointer-events: none;
+            animation: borderGlow 5s ease-in-out infinite;
+            z-index: 0;
+        }
+        .pricing-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        .price-pop {
+            display: inline-block;
+            animation: priceIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .step-chevron {
+            animation: chevronNudge 1.8s ease-in-out infinite;
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.5rem;
+            height: 2.5rem;
+            padding: 0 0.65rem;
+            border-radius: 0.75rem;
+            background: rgba(220, 133, 61, 0.12);
+            border: 1px solid rgba(220, 133, 61, 0.35);
+            color: #DC853D;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .faq-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-4);
+            padding: var(--space-5) 0;
+            text-align: left;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            min-height: 3.25rem;
+        }
+        .faq-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC853D;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+            background: rgba(220, 133, 61, 0.12);
+            border-color: rgba(220, 133, 61, 0.4);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease;
+            opacity: 0;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 220px;
+            opacity: 1;
+            padding-bottom: var(--space-5);
+        }
+
+        .guarantee-ring {
+            width: 180px;
+            height: 180px;
+            border-radius: 9999px;
+            border: 2px solid #DC853D;
+            box-shadow: 0 0 40px rgba(220, 133, 61, 0.35), inset 0 0 30px rgba(220, 133, 61, 0.08);
+            background: radial-gradient(circle at 40% 35%, rgba(220, 133, 61, 0.15), transparent 60%), #0A0F1E;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: ringPulse 3.5s ease-in-out infinite;
+        }
+
+        .trust-dot {
+            width: 0.375rem;
+            height: 0.375rem;
+            border-radius: 9999px;
+            background: #DC853D;
+            animation: dotPulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 0 0 rgba(220, 133, 61, 0); border-color: rgba(220, 133, 61, 0.45); }
+            50% { box-shadow: 0 0 18px rgba(220, 133, 61, 0.25); border-color: rgba(220, 133, 61, 0.85); }
+        }
+        @keyframes blobDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(28px, -18px) scale(1.1); }
+        }
+        @keyframes floatSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.55; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 0 24px rgba(220, 133, 61, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(220, 133, 61, 0.7); }
+        }
+        @keyframes shimmerSweep {
+            0%, 55% { transform: translateX(-120%); }
+            100% { transform: translateX(120%); }
+        }
+        @keyframes lineGrow {
+            from { transform: scaleX(0); opacity: 0; }
+            to { transform: scaleX(1); opacity: 1; }
+        }
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.35); opacity: 1; }
+        }
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.75; }
+        }
+        @keyframes priceIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes chevronNudge {
+            0%, 100% { transform: translateX(0); opacity: 0.55; }
+            50% { transform: translateX(4px); opacity: 1; }
+        }
+        @keyframes ringPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(220, 133, 61, 0.3), inset 0 0 30px rgba(220, 133, 61, 0.08); }
+            50% { box-shadow: 0 0 55px rgba(220, 133, 61, 0.55), inset 0 0 40px rgba(220, 133, 61, 0.14); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .badge-pill, .ambient-blob, .photo-frame, .photo-frame::before, .photo-frame::after,
+            .btn-cta, .btn-cta::after, .hero-line, .pricing-card::before,
+            .step-chevron, .guarantee-ring, .trust-dot {
+                animation: none !important;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body.custom-cursor, body.custom-cursor * { cursor: none !important; }
+            .cursor-dot {
+                width: 8px; height: 8px;
+                background: #DC853D;
+                border-radius: 50%;
+                position: fixed;
+                top: 0; left: 0;
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                transition: transform 0.12s ease, width 0.2s, height 0.2s;
+            }
+            .cursor-ring {
+                width: 36px; height: 36px;
+                border: 1px solid rgba(220, 133, 61, 0.6);
+                border-radius: 50%;
+                position: fixed;
+                top: 0; left: 0;
+                pointer-events: none;
+                z-index: 9998;
+                transform: translate(-50%, -50%);
+                transition: width 0.2s, height 0.2s, border-color 0.2s, transform 0.18s ease-out;
+            }
+            body.cursor-hover .cursor-ring {
+                width: 52px;
+                height: 52px;
+                border-color: rgba(220, 133, 61, 1);
+            }
+            body.cursor-hover .cursor-dot {
+                transform: translate(-50%, -50%) scale(0.6);
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-textPrimary font-sans antialiased selection:bg-brand-primary selection:text-brand-bg">
+
+    <!-- HERO -->
+    <section class="section hero">
+        <div class="hero-pattern" aria-hidden="true"></div>
+        <div class="ambient-blob top-24 -left-24 w-80 h-80 bg-blue-500/15 z-[1]"></div>
+        <div class="ambient-blob top-40 right-1/3 w-72 h-72 bg-brand-primary/15 z-[1]" style="animation-delay: -4s;"></div>
+        <div class="ambient-blob bottom-0 right-0 w-96 h-96 bg-brand-primary/8 z-[1]" style="animation-delay: -8s;"></div>
+
+        <div class="page-container relative z-10">
+            <div class="grid-split">
+                <div class="stack" data-aos="fade-right">
+                    <span class="badge-pill self-start">Personal Business Day</span>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.08] tracking-tight">
+                        Chega de Trocar Sua<br>
+                        Vida Inteira por Hora-Aula
+                    </h1>
+
+                    <p class="body-copy max-w-xl" data-aos="fade-up" data-aos-delay="120">
+                        Uma imersão online e ao vivo, de um dia, com Henrique Batista, pra você sair da lógica de hora-aula e construir um negócio de personal trainer com faturamento previsível.
+                    </p>
+
+                    <div class="hero-line"></div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                        <button type="button" onclick="abrirPopup()" class="btn-cta">
+                            Garantir vaga por R$19,90
+                        </button>
+                        <span class="trust-item text-sm text-brand-textSecondary">
+                            <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                            Pagamento 100% seguro
+                        </span>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left" data-aos-delay="100">
+                    <div class="photo-frame">
+                        <img src="img/hero-coach.jpg" alt="Profissional de fitness em treino de força" width="1200" height="1500" loading="eager" decoding="async">
+                        <div class="photo-frame-overlay" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O QUE VOCÊ VAI VIVENCIAR -->
+    <section id="vivenciar" class="section">
+        <div class="page-container">
+            <header class="section-head" data-aos="fade-up">
+                <span class="badge-pill">O que você vai vivenciar</span>
+                <h2 class="section-title section-title--wide">
+                    O que você vai vivenciar no Personal Business Day
+                </h2>
+            </header>
+
+            <div class="grid-features">
+                <article class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="icon-chip" aria-hidden="true"><i class="fas fa-clock-rotate-left"></i></div>
+                    <h3 class="card-title">Saia da lógica de hora-aula</h3>
+                    <p class="card-body">
+                        Aprenda o modelo que separa quem vende tempo de quem vende resultado - e fatura mais sem depender só da agenda cheia.
+                    </p>
+                </article>
+
+                <article class="feature-card" data-aos="fade-up" data-aos-delay="80">
+                    <div class="icon-chip" aria-hidden="true"><i class="fas fa-medal"></i></div>
+                    <h3 class="card-title">Ensinado por quem já viveu isso</h3>
+                    <p class="card-body">
+                        Henrique Batista constrói negócios reais no mercado fitness há anos. Não é teoria lida em algum lugar, é prática validada.
+                    </p>
+                </article>
+
+                <article class="feature-card" data-aos="fade-up" data-aos-delay="120">
+                    <div class="icon-chip" aria-hidden="true"><i class="fas fa-magnifying-glass-chart"></i></div>
+                    <h3 class="card-title">Raio-X ao vivo do seu negócio</h3>
+                    <p class="card-body">
+                        Henrique analisa casos reais de personal trainers na sua frente e mostra, na prática, onde está o dinheiro que você deixa na mesa todo mês.
+                    </p>
+                </article>
+
+                <article class="feature-card" data-aos="fade-up" data-aos-delay="160">
+                    <div class="icon-chip" aria-hidden="true"><i class="fas fa-map-location-dot"></i></div>
+                    <h3 class="card-title">Um plano pra sair do lugar</h3>
+                    <p class="card-body">
+                        Você sai do evento com um caminho claro - não só inspiração, mas o próximo passo prático pro seu negócio.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="dia" class="section">
+        <div class="absolute left-1/2 top-32 -translate-x-1/2 w-[420px] h-[220px] bg-brand-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="page-container relative z-10">
+            <header class="section-head" data-aos="fade-up">
+                <span class="badge-pill">O dia</span>
+                <h2 class="section-title">Como Funciona o Evento</h2>
+            </header>
+
+            <div class="grid-steps" data-aos="fade-up">
+                <article class="feature-card">
+                    <div class="step-head">
+                        <div class="icon-chip icon-chip--sm" aria-hidden="true"><i class="fas fa-ticket"></i></div>
+                        <div class="step-num">01</div>
+                    </div>
+                    <h3 class="card-title">Garanta sua vaga</h3>
+                    <p class="card-body">
+                        Pague pelo valor do lote atual e receba o link de acesso ao evento ao vivo direto no seu WhatsApp e e-mail.
+                    </p>
+                </article>
+
+                <div class="hidden md:flex items-center justify-center text-brand-primary text-xl step-chevron" aria-hidden="true">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+
+                <article class="feature-card">
+                    <div class="step-head">
+                        <div class="icon-chip icon-chip--sm" aria-hidden="true"><i class="fas fa-video"></i></div>
+                        <div class="step-num">02</div>
+                    </div>
+                    <h3 class="card-title">Participe ao vivo, no dia</h3>
+                    <p class="card-body">
+                        Quebra de crença + Raio-X ao vivo: Henrique analisa negócios reais de personal trainers da plateia, na hora.
+                    </p>
+                </article>
+
+                <div class="hidden md:flex items-center justify-center text-brand-primary text-xl step-chevron" style="animation-delay: 0.4s;" aria-hidden="true">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+
+                <article class="feature-card">
+                    <div class="step-head">
+                        <div class="icon-chip icon-chip--sm" aria-hidden="true"><i class="fas fa-compass"></i></div>
+                        <div class="step-num">03</div>
+                    </div>
+                    <h3 class="card-title">Saia com um plano de negócio</h3>
+                    <p class="card-body">
+                        No fechamento, você conhece o caminho completo do método - a Mentoria Personal Business, se fizer sentido pra você.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- HENRIQUE -->
+    <section id="henrique" class="section">
+        <div class="page-container">
+            <div class="grid-split grid-split--equal">
+                <div class="stack stack--loose" data-aos="fade-right">
+                    <div class="section-head section-head--left !mb-0">
+                        <span class="badge-pill">Quem vai conduzir o dia</span>
+                        <h2 class="section-title">Henrique Batista</h2>
+                    </div>
+
+                    <ul class="list-creds">
+                        <li>
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            <span>Referência técnica e acadêmica no mercado fitness</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-handshake" aria-hidden="true"></i>
+                            <span>Mentor de negócio pra personal trainers e profissionais de saúde</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <span>Formou centenas de profissionais em pós-graduação</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            <span>Referência no mercado fitness em posicionamento e faturamento</span>
+                        </li>
+                    </ul>
+
+                    <div class="feature-card border-brand-primary/20 !h-auto">
+                        <p class="text-brand-primary text-[0.9375rem] leading-relaxed">
+                            Henrique traz pro Personal Business Day o método que ele mesmo usou pra sair da lógica de hora-aula e construir um negócio sólido no mercado fitness.
+                        </p>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left" data-aos-delay="100">
+                    <div class="photo-frame">
+                        <img src="img/about-coach.jpg" alt="Coach de musculação em sessão de treino" width="1200" height="1500" loading="lazy" decoding="async">
+                        <div class="photo-frame-overlay" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section">
+        <div class="absolute left-1/2 top-20 -translate-x-1/2 w-[500px] h-[280px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="page-container page-container--narrow relative z-10">
+            <header class="section-head" data-aos="fade-up">
+                <span class="badge-pill">Lote 1 aberto</span>
+                <h2 class="section-title">
+                    Garanta sua vaga no Personal<br class="hidden sm:block"> Business Day
+                </h2>
+            </header>
+
+            <div class="feature-card pricing-card border-white/10" data-aos="zoom-in" data-aos-delay="80">
+                <div class="pricing-stack">
+                    <p class="card-body">O valor sobe conforme os dias passam</p>
+                    <p class="text-brand-textSecondary text-sm">por apenas</p>
+                    <p class="price-pop">R$ 19,90</p>
+                    <span class="badge-pill">Lote 1 - próximo lote sobe pra R$24,90</span>
+                    <button type="button" onclick="abrirPopup()" class="btn-cta btn-cta--block">
+                        Garantir vaga agora
+                    </button>
+                    <div class="trust-row">
+                        <span class="trust-item">
+                            <i class="fas fa-lock" aria-hidden="true"></i>
+                            Pagamento seguro
+                        </span>
+                        <span class="trust-item">
+                            <i class="fas fa-rotate-left" aria-hidden="true"></i>
+                            7 dias de garantia
+                        </span>
+                        <span class="trust-item">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                            Acesso imediato
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GARANTIA -->
+    <section id="garantia" class="section">
+        <div class="page-container page-container--narrow md:!max-w-4xl">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16" data-aos="fade-up">
+                <div class="guarantee-ring shrink-0">
+                    <span class="text-6xl font-extrabold text-brand-primary leading-none">7</span>
+                    <span class="text-brand-primary font-bold uppercase tracking-[0.2em] text-sm mt-1">Dias</span>
+                </div>
+
+                <div class="section-head section-head--left md:items-start !mb-0 text-center md:text-left items-center">
+                    <span class="badge-pill">Compra sem risco</span>
+                    <h2 class="section-title">7 dias de garantia</h2>
+                    <p class="body-copy max-w-xl">
+                        Você pode desistir da sua compra em até 7 dias corridos, como prevê o Código de Defesa do Consumidor. Se antes do evento você sentir que não é pra você, é só pedir o reembolso - sem complicação.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <div class="page-container page-container--narrow">
+            <header class="section-head" data-aos="fade-up">
+                <span class="badge-pill">FAQ</span>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+            </header>
+
+            <div data-aos="fade-up" data-aos-delay="60">
+                <div class="faq-item open">
+                    <button type="button" class="faq-btn" aria-expanded="true">
+                        <span class="font-semibold text-left text-[0.975rem]">Preciso já ser personal trainer pra participar?</span>
+                        <span class="faq-icon"><i class="fas fa-plus text-xs"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="card-body pr-10">
+                            Não. O evento é voltado principalmente pra personal trainers, mas nutricionistas e outros profissionais de saúde também encontram valor real no método.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-btn" aria-expanded="false">
+                        <span class="font-semibold text-left text-[0.975rem]">O método funciona pra qualquer cidade?</span>
+                        <span class="faq-icon"><i class="fas fa-plus text-xs"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="card-body pr-10">
+                            Sim. O método não depende do tamanho da sua cidade - depende de como você estrutura sua oferta e seu posicionamento.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-btn" aria-expanded="false">
+                        <span class="font-semibold text-left text-[0.975rem]">E se eu não conseguir assistir ao vivo?</span>
+                        <span class="faq-icon"><i class="fas fa-plus text-xs"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="card-body pr-10">
+                            O evento é ao vivo porque o Raio-X com casos reais só funciona nesse formato. Recomendamos reservar o dia inteiro.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-btn" aria-expanded="false">
+                        <span class="font-semibold text-left text-[0.975rem]">O valor sobe mesmo?</span>
+                        <span class="faq-icon"><i class="fas fa-plus text-xs"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="card-body pr-10">
+                            Sim. O Personal Business Day funciona em lotes - o valor sobe conforme os dias passam, então quanto antes você garantir, menor o investimento.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-btn" aria-expanded="false">
+                        <span class="font-semibold text-left text-[0.975rem]">Como funciona a garantia?</span>
+                        <span class="faq-icon"><i class="fas fa-plus text-xs"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="card-body pr-10">
+                            Você tem 7 dias corridos a partir da compra pra pedir reembolso, sem burocracia, conforme o Código de Defesa do Consumidor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section !pt-0">
+        <div class="page-container page-container--narrow">
+            <div class="cta-final" data-aos="fade-up">
+                <p class="body-copy">Ainda tem dúvidas? Garanta sua vaga e veja na prática.</p>
+                <button type="button" onclick="abrirPopup()" class="btn-cta">
+                    Garantir vaga por R$19,90
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bar relative z-20">
+        <div class="page-container">
+            <div class="footer-inner">
+                <div class="stack stack--tight">
+                    <p class="font-extrabold uppercase tracking-[0.08em] text-sm">Personal Business Day</p>
+                    <p class="text-brand-textSecondary text-sm">Henrique Batista · Personal Business Day</p>
+                </div>
+                <div class="stack stack--tight md:items-end md:text-right">
+                    <p class="text-brand-textSecondary text-xs">© 2026 - Todos os direitos reservados</p>
+                    <p class="text-brand-textSecondary text-xs">
+                        <a href="#" class="hover:text-brand-primary transition-colors">Política de Privacidade</a>
+                        <span class="mx-1.5">·</span>
+                        <a href="#" class="hover:text-brand-primary transition-colors">Termos de Uso</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- POPUP CAPTURA -->
+    <div id="popup-captura" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-brand-bg/90 backdrop-blur-xl" aria-hidden="true">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="relative bg-brand-surface border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(220,133,61,0.15)] max-w-md w-full p-8 md:p-10">
+            <button type="button" onclick="fecharPopup()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-brand-primary hover:border-brand-primary flex items-center justify-center text-brand-textSecondary hover:text-brand-bg transition-all duration-300 hover:rotate-90" aria-label="Fechar">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="text-center mb-8">
+                <div class="icon-chip mx-auto"><i class="fas fa-ticket" aria-hidden="true"></i></div>
+                <h3 class="font-extrabold text-2xl text-brand-textPrimary tracking-tight mb-2">Garanta sua vaga</h3>
+                <p class="text-sm text-brand-textSecondary">Preencha os dados para garantir sua vaga no Personal Business Day.</p>
+            </div>
+
+            <form id="form-personal-business-day" class="space-y-4 mt-6 popup-form">
+                <input type="hidden" id="utm_source" name="utm_source" value="">
+                <input type="hidden" id="utm_term" name="utm_term" value="">
+                <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+                <input type="hidden" id="utm_medium" name="utm_medium" value="">
+                <input type="hidden" id="utm_content" name="utm_content" value="">
+                <input type="hidden" id="url" name="url" value="">
+
+                <div>
+                    <label for="lead-nome" class="block text-sm font-medium text-gray-300 mb-1">Nome</label>
+                    <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome completo" class="w-full px-4 py-3 rounded-lg bg-brand-bg border border-white/10 text-white placeholder-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition">
+                </div>
+                <div>
+                    <label for="lead-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                    <input type="email" id="lead-email" name="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-lg bg-brand-bg border border-white/10 text-white placeholder-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition">
+                </div>
+                <div>
+                    <label for="lead-phone" class="block text-sm font-medium text-gray-300 mb-1">Telefone</label>
+                    <div class="flex rounded-lg overflow-hidden border border-white/10 focus-within:border-brand-primary focus-within:ring-1 focus-within:ring-brand-primary bg-brand-bg">
+                        <span class="inline-flex items-center px-4 py-3 bg-brand-primary text-black font-bold select-none shrink-0">+55</span>
+                        <input type="tel" id="lead-phone" name="phone" required placeholder="(11) 99999-9999" maxlength="15" autocomplete="tel" class="flex-1 px-4 py-3 bg-transparent text-white placeholder-gray-500 outline-none min-w-0 mask-telefone">
+                    </div>
+                    <p class="error-msg text-red-400 text-xs mt-1 hidden">Informe o DDD e o número completo.</p>
+                </div>
+                <button type="submit" class="w-full bg-brand-primary text-brand-bg font-sans font-bold py-4 rounded-xl uppercase tracking-widest hover:shadow-[0_0_20px_rgba(220,133,61,0.6)] transition btn-submit mt-2">
+                    Avançar para Pagamento
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="cursor-dot hidden lg:block" id="cursor-dot"></div>
+    <div class="cursor-ring hidden lg:block" id="cursor-ring"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        if (typeof AOS !== 'undefined') AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // Preencher depois: webhook + redirect
+        const CONFIG = {
+            produto: 'Personal Business Day',
+            webhook: '',
+            redirect: ''
+        };
+
+        const popup = document.getElementById('popup-captura');
+        const form = document.getElementById('form-personal-business-day');
+
+        function abrirPopup() {
+            popup.classList.remove('hidden');
+            popup.classList.add('flex');
+            popup.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharPopup() {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+            popup.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        popup.addEventListener('click', (e) => { if (e.target === popup) fecharPopup(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && popup.classList.contains('flex')) fecharPopup();
+        });
+
+        function preencherCamposTracking() {
+            const params = new URLSearchParams(window.location.search);
+            ['utm_source', 'utm_term', 'utm_campaign', 'utm_medium', 'utm_content'].forEach((key) => {
+                const el = document.getElementById(key);
+                if (el) el.value = params.get(key) || '';
+            });
+            const urlEl = document.getElementById('url');
+            if (urlEl) urlEl.value = window.location.href;
+        }
+        preencherCamposTracking();
+
+        const telInput = form.querySelector('.mask-telefone');
+        telInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.startsWith('55') && value.length > 2) value = value.slice(2);
+            value = value.slice(0, 11);
+            let formatado = value;
+            if (value.length > 2) formatado = `(${value.slice(0, 2)}) ` + value.slice(2);
+            if (value.length > 7) formatado = formatado.slice(0, 10) + '-' + formatado.slice(10);
+            e.target.value = formatado;
+            form.querySelector('.error-msg').classList.add('hidden');
+        });
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btnSubmit = form.querySelector('.btn-submit');
+            const errorMsg = form.querySelector('.error-msg');
+            const telefoneFormatado = telInput.value.trim();
+            const rawPhone = telefoneFormatado.replace(/\D/g, '');
+
+            if (rawPhone.length < 10) {
+                errorMsg.classList.remove('hidden');
+                telInput.focus();
+                return;
+            }
+
+            // Layout first: formulário funcional visualmente; webhook/redirect no próximo passo
+            if (!CONFIG.webhook || !CONFIG.redirect) {
+                alert('Layout ok. Configure webhook e redirect no próximo passo.');
+                return;
+            }
+
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = 'Processando...';
+
+            const payload = {
+                nome: form.querySelector('[name="nome"]').value.trim(),
+                email: form.querySelector('[name="email"]').value.trim(),
+                telefone: '+55' + rawPhone,
+                utm_source: document.getElementById('utm_source')?.value || '',
+                utm_medium: document.getElementById('utm_medium')?.value || '',
+                utm_campaign: document.getElementById('utm_campaign')?.value || '',
+                utm_term: document.getElementById('utm_term')?.value || '',
+                utm_content: document.getElementById('utm_content')?.value || '',
+                url: window.location.href,
+                produto: CONFIG.produto
+            };
+
+            Object.keys(payload).forEach((k) => { if (!payload[k]) delete payload[k]; });
+
+            try {
+                await fetch(CONFIG.webhook, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.error(err);
+            } finally {
+                const url = new URL(CONFIG.redirect, window.location.origin);
+                Object.entries(payload).forEach(([key, value]) => {
+                    if (value) url.searchParams.set(key, value);
+                });
+                window.location.href = url.toString();
+            }
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const willOpen = !item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach((el) => {
+                    el.classList.remove('open');
+                    el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+                });
+                if (willOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // Custom cursor (desktop)
+        if (window.matchMedia('(min-width: 1024px)').matches) {
+            const dot = document.getElementById('cursor-dot');
+            const ring = document.getElementById('cursor-ring');
+            document.body.classList.add('custom-cursor');
+            document.addEventListener('mousemove', (e) => {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+                ring.style.left = e.clientX + 'px';
+                ring.style.top = e.clientY + 'px';
+            });
+            document.querySelectorAll('a, button, .faq-btn, .feature-card').forEach((el) => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+    </script>
+</body>
+</html>
