@@ -460,13 +460,158 @@
             flex-direction: column;
             align-items: center;
             gap: var(--space-5);
+            width: 100%;
         }
         .pricing-stack .price-pop {
-            margin: var(--space-2) 0;
+            margin: 0;
             font-size: clamp(2.75rem, 4vw + 1rem, 3.75rem);
             font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1;
+        }
+        .price-from {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #64748B;
+            text-decoration: line-through;
+            text-decoration-thickness: 1.5px;
+            letter-spacing: 0.01em;
+        }
+        .price-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .price-block .price-label {
+            font-size: 0.875rem;
+            color: #94A3B8;
+        }
+        .page-topbar {
+            position: relative;
+            z-index: 40;
+            width: 100%;
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .page-topbar-inner {
+            width: 100%;
+            max-width: var(--container);
+            margin-inline: auto;
+            padding: 0.95rem var(--space-6);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-4);
+        }
+        .page-topbar-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            color: #F5F5F5;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            line-height: 1.3;
+        }
+        .page-topbar-title i {
+            font-size: 0.8rem;
+            color: #FFFFFF;
+        }
+        .page-topbar-title .sep {
+            opacity: 0.55;
+            margin: 0 0.15rem;
+            font-weight: 500;
+        }
+        .page-topbar-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.5rem 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 0.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            color: #F5F5F5;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+        }
+        .page-topbar-box i {
+            font-size: 0.8rem;
+        }
+        .page-topbar-box .sep {
+            opacity: 0.5;
+            margin: 0 0.1rem;
+        }
+        @media (max-width: 640px) {
+            .page-topbar-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .page-topbar-box {
+                white-space: normal;
+            }
+        }
+
+        .ticket-progress {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            padding-bottom: var(--space-5);
+            margin-bottom: var(--space-2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .ticket-progress-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-3);
+            width: 100%;
+        }
+        .ticket-progress-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-align: left;
+        }
+        .ticket-progress-label i {
+            color: #DC853D;
+        }
+        .ticket-progress-pct {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #DC853D;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .ticket-bar {
+            width: 100%;
+            height: 0.55rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .ticket-bar-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #C97432 0%, #DC853D 55%, #E89A55 100%);
+            box-shadow: 0 0 14px rgba(220, 133, 61, 0.55);
+            transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .ticket-progress-meta {
+            font-size: 0.72rem;
+            color: #64748B;
+            text-align: left;
+            width: 100%;
         }
         .cta-final {
             display: flex;
@@ -699,6 +844,20 @@
 </head>
 <body class="bg-brand-bg text-brand-textPrimary font-sans antialiased selection:bg-brand-primary selection:text-brand-bg">
 
+    <!-- TOPO DA PÁGINA -->
+    <div class="page-topbar">
+        <div class="page-topbar-inner">
+            <p class="page-topbar-title">
+                <i class="fas fa-asterisk" aria-hidden="true"></i>
+                <span>Personal Business Day <span class="sep">|</span> Imersão online e ao vivo</span>
+            </p>
+            <div class="page-topbar-box">
+                <i class="far fa-calendar" aria-hidden="true"></i>
+                <span>Lote 1 aberto <span class="sep">|</span> por R$19,90</span>
+            </div>
+        </div>
+    </div>
+
     <!-- HERO -->
     <section class="section hero">
         <div class="hero-pattern" aria-hidden="true"></div>
@@ -902,10 +1061,30 @@
 
             <div class="feature-card pricing-card border-white/10" data-aos="zoom-in" data-aos-delay="80">
                 <div class="pricing-stack">
-                    <p class="card-body">O valor sobe conforme os dias passam</p>
-                    <p class="text-brand-textSecondary text-sm">por apenas</p>
-                    <p class="price-pop">R$ 19,90</p>
                     <span class="badge-pill">Lote 1 - próximo lote sobe pra R$24,90</span>
+
+                    <div class="ticket-progress" aria-live="polite">
+                        <div class="ticket-progress-top">
+                            <span class="ticket-progress-label">
+                                <i class="fas fa-ticket" aria-hidden="true"></i>
+                                Restam <span id="ticket-remaining-label">—</span> das vagas
+                            </span>
+                            <span class="ticket-progress-pct" id="ticket-remaining-pct">—%</span>
+                        </div>
+                        <div class="ticket-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Vagas restantes do Lote 1" id="ticket-bar">
+                            <div class="ticket-bar-fill" id="ticket-bar-fill"></div>
+                        </div>
+                        <p class="ticket-progress-meta">
+                            <span id="ticket-remaining-count">—</span> de <span id="ticket-total-count">—</span> tickets disponíveis no Lote 1
+                        </p>
+                    </div>
+
+                    <p class="card-body">O valor sobe conforme os dias passam</p>
+                    <div class="price-block">
+                        <p class="price-from">de R$ 97,00</p>
+                        <p class="price-label">por apenas</p>
+                        <p class="price-pop">R$ 19,90</p>
+                    </div>
                     <button type="button" onclick="abrirPopup()" class="btn-cta btn-cta--block">
                         Garantir vaga agora
                     </button>
@@ -1107,8 +1286,40 @@
         const CONFIG = {
             produto: 'Personal Business Day',
             webhook: '',
-            redirect: ''
+            redirect: '',
+            tickets: {
+                total: 100,
+                remainingPct: 75
+            }
         };
+
+        function getRemainingTicketPct() {
+            return CONFIG.tickets.remainingPct;
+        }
+
+        function updateTicketProgress() {
+            const pctEl = document.getElementById('ticket-remaining-pct');
+            const labelEl = document.getElementById('ticket-remaining-label');
+            const fillEl = document.getElementById('ticket-bar-fill');
+            const barEl = document.getElementById('ticket-bar');
+            const remainingCountEl = document.getElementById('ticket-remaining-count');
+            const totalCountEl = document.getElementById('ticket-total-count');
+            if (!pctEl || !fillEl) return;
+
+            const remainingPct = getRemainingTicketPct();
+            const total = CONFIG.tickets.total;
+            const remainingCount = Math.max(1, Math.round((remainingPct / 100) * total));
+
+            pctEl.textContent = remainingPct + '%';
+            if (labelEl) labelEl.textContent = remainingPct + '%';
+            remainingCountEl.textContent = remainingCount;
+            totalCountEl.textContent = total;
+            fillEl.style.width = remainingPct + '%';
+            barEl.setAttribute('aria-valuenow', String(remainingPct));
+        }
+
+        updateTicketProgress();
+        setInterval(updateTicketProgress, 60 * 1000);
 
         const popup = document.getElementById('popup-captura');
         const form = document.getElementById('form-personal-business-day');
